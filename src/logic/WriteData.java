@@ -8,17 +8,30 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 
+/**
+ * @author Johannes Kuepper (johannes.kuepper@mailbox.tu-dresden.de)
+ *
+ */
 public class WriteData {
 	
 	private String exportPath;
 	private String fileName;
 	
+	/**
+	 * @param exportPath
+	 * @param fileName
+	 */
 	public WriteData(String exportPath, String fileName){
 		this.exportPath = exportPath;
 		this.fileName = fileName;
 	}
 	
 	//WRITE INFORMATION TO CSV
+	/**
+	 * @param data
+	 * @return
+	 * @throws IOException
+	 */
 	public boolean writeCSV(Map<String, ArrayList<String>> data) throws IOException {
 		File file = new File(exportPath + fileName + ".csv");
 		FileWriter fr = new FileWriter(file);

@@ -21,6 +21,10 @@ import org.geonames.ToponymSearchResult;
 import org.geonames.WebService;
 import org.geonames.WikipediaArticle;
 
+/**
+ * @author Johannes Kuepper (johannes.kuepper@mailbox.tu-dresden.de) 
+ *
+ */
 public class ReadData {
 
 	private String path;
@@ -32,6 +36,10 @@ public class ReadData {
 	}
 	
 	//SEARCH FOR FILES
+	/**
+	 * @param folder
+	 * @throws IOException
+	 */
 	public void listFilesForFolder(final File folder) throws IOException {
 	    for (final File fileEntry : folder.listFiles()) {
 	        if (fileEntry.isDirectory()) {
@@ -49,6 +57,11 @@ public class ReadData {
 	
 	
 	//EXTRACT GEOGRAPHIC INFORMATION
+	/**
+	 * @param sf
+	 * @return
+	 * @throws Exception
+	 */
 	public ArrayList<String> getGeographicInformation(Shapefile sf) throws Exception{
 		
 		ArrayList<String> geographicInfo = new ArrayList<String>();
@@ -96,6 +109,10 @@ public class ReadData {
 	
 	//TODO: change to geotools lib
 	//EXTRACT INFORMATION FROM FILES
+	/**
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public boolean extractFileData()
 			throws FileNotFoundException {
 
@@ -149,6 +166,9 @@ public class ReadData {
 	}
 
 	//RETURN INFORMATION
+	/**
+	 * @return
+	 */
 	public Map<String, ArrayList<String>> getData() {
 		return data;
 	}
