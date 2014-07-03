@@ -9,7 +9,7 @@ Little tool to extract metadata from geodata, derive some additional geographic 
   - Import Shapefiles
   - Import GeoTIFF Files
   - Extract Metadata
-  - Derive geographic information (with help of geonames)
+  - Derive geographic information
   - Export to csv
 
 For more information have a look here: https://dl.dropboxusercontent.com/u/36439405/MetadataExtractor.pdf
