@@ -9,8 +9,8 @@ import java.io.IOException;
 
 import javax.swing.*;
 
-import logic.ReadData;
-import logic.WriteData;
+import importer.Importer;
+import exporter.Exporter;
 
 public class MetadataExtractor {
 
@@ -40,8 +40,8 @@ public class MetadataExtractor {
 		File importFolder = new File(importPath);
 
 		// READ DATA
-		ReadData rd = new ReadData();
-		rd.listFilesForFolder(importFolder);
+		Importer rd = new Importer();
+		rd.listFilesForFolder();
 		boolean okrd = rd.extractFileData();
 		if (okrd) {
 			System.out.println("------ READ DATA: COMPLETE ------");
@@ -50,7 +50,7 @@ public class MetadataExtractor {
 		}
 
 		// WRITE DATA
-		WriteData wd = new WriteData(exportPath, fileName);
+		Exporter wd = new Exporter(exportPath, fileName);
 		boolean okwd = wd.writeCSV(rd.getData());
 		if (okwd) {
 			System.out
@@ -86,7 +86,7 @@ public class MetadataExtractor {
 			JButton button = new JButton("Go. Execute.");
 
 			// Der Button soll einen Dialog starten
-			// Hier wird eine anonyme, innere Klasse für das
+			// Hier wird eine anonyme, innere Klasse fuer das
 			// Event-Handling benutzt.
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -99,9 +99,9 @@ public class MetadataExtractor {
 			// Den Button in der Mitte platzieren
 			getContentPane().add(button, BorderLayout.CENTER);
 
-			// Größe setzen (oder pack() aufrufen)
+			// Groessee setzen (oder pack() aufrufen)
 			setSize(200, 100);
-			// Wenn jemand das Fenster schließt, soll
+			// Wenn jemand das Fenster schliesst, soll
 			// die Applikation beendet werden
 			// (System.exit (0) wird aufgerufen)
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,5 +1,5 @@
-/gui/
+/geo/
 /logic/
-/MetadataExtractor$MetadataExtractorApplication$1.class
-/MetadataExtractor$MetadataExtractorApplication.class
-/MetadataExtractor.class
+/exporter/
+/gui/
+/importer/
