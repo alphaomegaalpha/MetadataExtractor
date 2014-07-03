@@ -1,7 +1,8 @@
 MetadataExtractor
 =================
 
-************************************STILL IN PROGRESS************************************
+************************************STILL IN PROGRESS***********************************
+***************************************NOT STABLE***************************************
 
 Little tool to extract metadata from geodata, derive some additional geographic information and write all the information to a .csv-file.
 
@@ -16,4 +17,5 @@ For more information have a look here: https://dl.dropboxusercontent.com/u/36439
 
 Feel free to use it, share your ideas or contribute by code.
 
-************************************STILL IN PROGRESS************************************
+************************************STILL IN PROGRESS***********************************
+***************************************NOT STABLE***************************************
