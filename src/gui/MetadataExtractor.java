@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.swing.*;
 
 import importer.Importer;
+import importer.ShpImporter;
 import exporter.Exporter;
 
 public class MetadataExtractor {
@@ -40,7 +41,7 @@ public class MetadataExtractor {
 		File importFolder = new File(importPath);
 
 		// READ DATA
-		Importer rd = new Importer();
+		ShpImporter rd = new ShpImporter();
 		rd.listFilesForFolder();
 		boolean okrd = rd.extractFileData();
 		if (okrd) {
