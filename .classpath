@@ -139,7 +139,6 @@
 	<classpathentry kind="lib" path="/Users/jkuepper/workspace/MetadataExtractor/lib/geotools-10.7/imageio-ext-gdalrpftoc-1.1.8.jar"/>
 	<classpathentry kind="lib" path="/Users/jkuepper/workspace/MetadataExtractor/lib/geotools-10.7/imageio-ext-geocore-1.1.8.jar"/>
 	<classpathentry kind="lib" path="/Users/jkuepper/workspace/MetadataExtractor/lib/geotools-10.7/imageio-ext-imagereadmt-1.1.8.jar"/>
-	<classpathentry kind="lib" path="/Users/jkuepper/workspace/MetadataExtractor/lib/geotools-10.7/imageio-ext-imagereadmt-1.1M012010.jar"/>
 	<classpathentry kind="lib" path="/Users/jkuepper/workspace/MetadataExtractor/lib/geotools-10.7/imageio-ext-kakadu-1.1.8.jar"/>
 	<classpathentry kind="lib" path="/Users/jkuepper/workspace/MetadataExtractor/lib/geotools-10.7/imageio-ext-mat-sas-1.1M012010.jar"/>
 	<classpathentry kind="lib" path="/Users/jkuepper/workspace/MetadataExtractor/lib/geotools-10.7/imageio-ext-streams-1.1.8.jar"/>
