@@ -50,8 +50,6 @@ public class SHPtoCSV {
 
 	public void readShp() throws IOException {
 
-		System.out.println(files.size());
-
 		for (File f : files) {
 
 			Map<String, Serializable> map = new HashMap<>();
@@ -59,7 +57,6 @@ public class SHPtoCSV {
 
 			DataStore dataStore = DataStoreFinder.getDataStore(map);
 			String typeName = dataStore.getTypeNames()[0];
-			System.out.println(dataStore.getTypeNames()[0]);
 			FeatureSource<?, SimpleFeature> source = dataStore
 					.getFeatureSource(typeName);
 			dataStore.dispose();
@@ -77,7 +74,7 @@ public class SHPtoCSV {
 							.toString();
 					String type = feature.getType().toString();
 					String id = feature.getID();
-					//String nor
+					// String nor
 					Collection<Property> attr = feature.getProperties();
 					BoundingBox bbox = feature.getBounds();
 					String left = new Double(bbox.getMinX()).toString();
@@ -110,8 +107,7 @@ public class SHPtoCSV {
 		}
 	}
 
-	public void getGeographicInformation()
-			throws Exception {
+	public void getGeographicInformation() throws Exception {
 
 		ArrayList<String> geographicInfo = new ArrayList<String>();
 
@@ -122,51 +118,54 @@ public class SHPtoCSV {
 
 			DataStore dataStore = DataStoreFinder.getDataStore(map);
 			String typeName = dataStore.getTypeNames()[0];
-			System.out.println(dataStore.getTypeNames()[0]);
-			FeatureSource<?, SimpleFeature> source = dataStore.getFeatureSource(typeName);
+			FeatureSource<?, SimpleFeature> source = dataStore
+					.getFeatureSource(typeName);
 			dataStore.dispose();
-			FeatureCollection<?, SimpleFeature> collection = source.getFeatures();
+			FeatureCollection<?, SimpleFeature> collection = source
+					.getFeatures();
 			FeatureIterator<SimpleFeature> results = collection.features();
 			SimpleFeature feature = (SimpleFeature) results.next();
-			
-		BoundingBox bbox = feature.getBounds();
-		double latitude = bbox.getMaxX();
-		double longitude = bbox.getMinY();
 
-		// LOGIN TO GEONAMES WEBSERVICE AND SET PARAMETERS
-		System.out.println("Connecting to geonames webservice...");
-		WebService.setUserName("jkuepper");
-		String language = "english";
+			BoundingBox bbox = feature.getBounds();
+			double latitude = bbox.getMaxX();
+			double longitude = bbox.getMinY();
 
-		// GET INFORMATION FROM GEONAMES
+			// LOGIN TO GEONAMES WEBSERVICE AND SET PARAMETERS
+			System.out.println("Connecting to geonames webservice...");
+			WebService.setUserName("jkuepper");
+			String language = "english";
 
-		ToponymSearchCriteria searchCriteria = new ToponymSearchCriteria();
-		searchCriteria.setQ("zurich");
-		ToponymSearchResult searchResult = WebService.search(searchCriteria);
-		for (Toponym toponym : searchResult.getToponyms()) {
-			System.out.println(toponym.getName() + " "
-					+ toponym.getCountryName());
-		}
+			// GET INFORMATION FROM GEONAMES
 
-		try {
-			List<WikipediaArticle> wikiURL = WebService.findNearbyWikipedia(
-					latitude, longitude, language);
-			geographicInfo.add(wikiURL.toString());
-			System.out.println("Cool... Found wikipedia URL.");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		String countryCode = WebService.countryCode(latitude, longitude);
-		List<Toponym> placeName = WebService.findNearbyPlaceName(latitude,
-				longitude);
-		PostalCodeSearchCriteria pcsc = new PostalCodeSearchCriteria();
-		pcsc.setLatitude(latitude);
-		pcsc.setLongitude(longitude);
-		List<PostalCode> postalCode = WebService.findNearbyPostalCodes(pcsc);
+			ToponymSearchCriteria searchCriteria = new ToponymSearchCriteria();
+			searchCriteria.setQ("zurich");
+			ToponymSearchResult searchResult = WebService
+					.search(searchCriteria);
+			for (Toponym toponym : searchResult.getToponyms()) {
+				System.out.println(toponym.getName() + " "
+						+ toponym.getCountryName());
+			}
 
-		geographicInfo.add(placeName.toString());
-		geographicInfo.add(postalCode.toString());
-		geographicInfo.add(countryCode);
+			try {
+				List<WikipediaArticle> wikiURL = WebService
+						.findNearbyWikipedia(latitude, longitude, language);
+				geographicInfo.add(wikiURL.toString());
+				System.out.println("Cool... Found wikipedia URL.");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			String countryCode = WebService.countryCode(latitude, longitude);
+			List<Toponym> placeName = WebService.findNearbyPlaceName(latitude,
+					longitude);
+			PostalCodeSearchCriteria pcsc = new PostalCodeSearchCriteria();
+			pcsc.setLatitude(latitude);
+			pcsc.setLongitude(longitude);
+			List<PostalCode> postalCode = WebService
+					.findNearbyPostalCodes(pcsc);
+
+			geographicInfo.add(placeName.toString());
+			geographicInfo.add(postalCode.toString());
+			geographicInfo.add(countryCode);
 		}
 	}
 
